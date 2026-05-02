@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صودا | Soda - Linktree</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --pepsi-blue: #0056b3; 
+            --button-bg: rgba(0, 86, 179, 0.85);
+            --white: #ffffff;
+            --black: #000000;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            /* استخدام خط Cairo كخط أساسي */
+            font-family: 'Cairo', sans-serif;
+            background-color: #000;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        #main-content {
+            display: flex; min-height: 100vh; width: 100%;
+            background-image: url('./1000266763.jpg'); 
+            background-size: cover; background-position: center center;
+            position: relative; flex-direction: column; align-items: center; padding-top: 15px;
+        }
+
+        .spotlight {
+            position: absolute; top: -150px; width: 160%; height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 20%, rgba(255,255,255,0.7) 45%, rgba(255,255,255,0) 90%);
+            filter: blur(60px); z-index: 1; pointer-events: none;
+        }
+
+        .profile-pic {
+            width: 110px; height: 110px; border-radius: 50%;
+            border: 4px solid var(--black);
+            background-image: url('./1000263099.jpg');
+            background-size: cover; background-position: center;
+            margin-bottom: 5px; z-index: 10;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+        }
+
+        .username { 
+            font-size: 26px; z-index: 10; 
+            color: var(--black); font-weight: 700; /* خط عريض وراقي */
+            margin-top: 25px; 
+            margin-bottom: 5px;
+        }
+
+        .clock-wrapper {
+            z-index: 10;
+            display: flex; align-items: baseline;
+            color: var(--black); font-weight: 700;
+            margin-bottom: 25px;
+            /* جعل الأرقام بخط الـ Pixel لتصميم مميز */
+            font-family: 'VT323', monospace; 
+        }
+
+        #time-digits { font-size: 58px; letter-spacing: 1px; line-height: 1; }
+        #ampm-text { font-size: 24px; margin-right: 8px; font-family: 'Cairo', sans-serif; }
+
+        .menu-list { 
+            display: flex; flex-direction: column; gap: 12px; 
+            width: 85%; max-width: 300px; z-index: 10; 
+            margin-top: 10px; 
+        }
+        
+        .menu-item {
+            text-decoration: none; color: var(--white);
+            background-color: var(--button-bg); font-size: 20px;
+            font-weight: 700;
+            padding: 10px 20px; border-radius: 50px; border: 2px solid var(--white);
+            transition: 0.3s;
+            display: grid;
+            grid-template-columns: 30px 1fr 30px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .menu-item i { font-size: 20px; grid-column: 1; }
+        .menu-item span { grid-column: 2; }
+        .menu-item:hover { background-color: var(--white); color: var(--pepsi-blue); transform: scale(1.05); }
+
+        .start-text {
+            margin-top: 25px; color: var(--white);
+            font-size: 32px; text-shadow: 2px 2px #000;
+            font-family: 'VT323', monospace;
+            animation: blinker 1s linear infinite; z-index: 10;
+        }
+
+        .news-ticker {
+            position: absolute; bottom: 0; width: 100%;
+            background: rgba(0, 0, 0, 0.8); border-top: 2px solid var(--white);
+            padding: 10px 0; z-index: 20; overflow: hidden; white-space: nowrap;
+        }
+
+        .ticker-content {
+            display: inline-block; font-size: 20px; color: var(--white);
+            animation: ticker 10s linear infinite; 
+            font-weight: 400;
+        }
+
+        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        .crt {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px; z-index: 5; pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-content">
+        <div class="spotlight"></div>
+        <div class="crt"></div>
+        
+        <div class="profile-pic"></div>
+        
+        <div class="username">صودا | Soda</div>
+
+        <div class="clock-wrapper">
+            <span id="ampm-text">--</span>
+            <span id="time-digits">00:00:00</span>
+        </div>
+
+        <div class="menu-list">
+            <a href="https://www.tiktok.com/@pepsl_m4n" target="_blank" class="menu-item">
+                <i class="fab fa-tiktok"></i>
+                <span>تيك توك</span>
+            </a>
+            <a href="https://www.instagram.com/_soda0_?igsh=MWkycXgwc3NucnVkZg==" target="_blank" class="menu-item">
+                <i class="fab fa-instagram"></i>
+                <span>إنستجرام</span>
+            </a>
+            <a href="https://youtube.com/@soda_mn?si=9U6C1GcfCT14ThHK" target="_blank" class="menu-item">
+                <i class="fab fa-youtube"></i>
+                <span>يوتيوب</span>
+            </a>
+            <a href="#" target="_blank" class="menu-item">
+                <i class="fab fa-discord"></i>
+                <span>ديسكورد</span>
+            </a>
+        </div>
+
+        <div class="start-text">PRESS START</div>
+
+        <div class="news-ticker">
+            <div class="ticker-content">
+                WELCOME TO SODA WORLD .. LOADING NEW EDITS .. SYSTEM STABLE .. @SODA_MN
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateCairoTime() {
+            const now = new Date();
+            const formatter = new Intl.DateTimeFormat("en-US", {
+                timeZone: "Africa/Cairo",
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                hour12: true
+            });
+            const parts = formatter.formatToParts(now);
+            let timeString = ""; let ampm = "";
+            parts.forEach(part => {
+                if (part.type === 'dayPeriod') ampm = part.value === 'AM' ? 'صباحاً' : 'مساءً';
+                else if (part.type !== 'literal' || part.value === ':') {
+                    timeString += part.value;
+                }
+            });
+            document.getElementById('time-digits').innerText = timeString.trim();
+            document.getElementById('ampm-text').innerText = ampm;
+        }
+
+        setInterval(updateCairoTime, 1000);
+        updateCairoTime();
+    </script>
+</body>
+</html>
