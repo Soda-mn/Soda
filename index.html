@@ -17,7 +17,6 @@
         body, html {
             margin: 0; padding: 0;
             width: 100%; height: 100%;
-            /* استخدام خط Cairo كخط أساسي */
             font-family: 'Cairo', sans-serif;
             background-color: #000;
             overflow: hidden;
@@ -48,7 +47,7 @@
 
         .username { 
             font-size: 26px; z-index: 10; 
-            color: var(--black); font-weight: 700; /* خط عريض وراقي */
+            color: var(--black); font-weight: 700;
             margin-top: 25px; 
             margin-bottom: 5px;
         }
@@ -58,7 +57,6 @@
             display: flex; align-items: baseline;
             color: var(--black); font-weight: 700;
             margin-bottom: 25px;
-            /* جعل الأرقام بخط الـ Pixel لتصميم مميز */
             font-family: 'VT323', monospace; 
         }
 
@@ -83,15 +81,16 @@
             text-align: center;
         }
 
-        .menu-item i { font-size: 20px; grid-column: 1; }
-        .menu-item span { grid-column: 2; }
         .menu-item:hover { background-color: var(--white); color: var(--pepsi-blue); transform: scale(1.05); }
 
+        /* تعديل زرار Press Start عشان يكون قابل للضغط */
         .start-text {
             margin-top: 25px; color: var(--white);
             font-size: 32px; text-shadow: 2px 2px #000;
             font-family: 'VT323', monospace;
             animation: blinker 1s linear infinite; z-index: 10;
+            cursor: pointer;
+            user-select: none; /* عشان ميتحددش الكلام وأنت بتدوس بسرعة */
         }
 
         .news-ticker {
@@ -103,7 +102,6 @@
         .ticker-content {
             display: inline-block; font-size: 20px; color: var(--white);
             animation: ticker 10s linear infinite; 
-            font-weight: 400;
         }
 
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
@@ -123,7 +121,6 @@
         <div class="crt"></div>
         
         <div class="profile-pic"></div>
-        
         <div class="username">صودا | Soda</div>
 
         <div class="clock-wrapper">
@@ -150,7 +147,7 @@
             </a>
         </div>
 
-        <div class="start-text">PRESS START</div>
+        <div class="start-text" onclick="playStartSound()">PRESS START</div>
 
         <div class="news-ticker">
             <div class="ticker-content">
@@ -159,7 +156,20 @@
         </div>
     </div>
 
+    <audio id="start-audio">
+        <source src="start.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
+        // دالة تشغيل الصوت بنظام الـ Spam
+        const startSound = document.getElementById('start-audio');
+        
+        function playStartSound() {
+            startSound.pause();        // وقف الصوت لو شغال
+            startSound.currentTime = 0; // ارجع للبداية فوراً
+            startSound.play();         // شغل من الأول
+        }
+
         function updateCairoTime() {
             const now = new Date();
             const formatter = new Intl.DateTimeFormat("en-US", {
